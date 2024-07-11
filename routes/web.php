@@ -32,3 +32,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/tambahKategori', [KategoriController::class, 'create']);
     Route::post('/tambahKategori/newKategori',[kategoriController::class, 'store'])->name('Kategori.store');
     Route::delete('/kategori/destroy/{id}',[kategoriController::class, 'destroy'])->name('kategori.destroy');
+
+    Route::get('/about',function(){
+        return view('about');
+    });

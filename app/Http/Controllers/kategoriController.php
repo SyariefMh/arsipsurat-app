@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 
 class kategoriController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $kategori = Kategori::all();
-
-        return view('kategori', ['Kategori' => $kategori]);
+        $query = kategori::query(); // Eager loading relasi kategoriSurat
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('nama_kategori', 'like', "%$search%")
+                ->orWhere('keterangan', 'like', "%$search%");
+                }
+        $kategori = $query->paginate(10);
+        return view('kategori', compact('kategori'));
     }
 
     public function tambahKategori()

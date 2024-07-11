@@ -11,6 +11,18 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Arsip Surat</title>
+
+    <style>
+        .container-isi {
+            max-height: 400px; /* Adjust the height as needed */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+        .table {
+            margin-bottom: 0; /* Ensure no extra margin at the bottom */
+        }
+    </style>
+
 </head>
 
 <body>
@@ -26,19 +38,19 @@
                         Klik "Lihat" pada kolom aksi untuk menampilkan surat.</p>
                 </div>
 
-                <div class="search-filter">
-                    <form action="#" method="GET" class="d-flex w-100">
-                        <span class="input-group-text">Cari Surat</span>
+                <div class="search-filter d-flex justify-content-center">
+                    <form action="#" method="GET" class="d-flex w-100 justify-content-center align-items-center">
+                        <span class="judul" style="margin-right: 10px; font-weight: 700">Cari Surat:</span>
                         <input type="text" name="search" class="form-control rounded-start" placeholder="Search..."
                             aria-label="Search" aria-describedby="search-button" value="{{ request('search') }}"
-                            style="width: 600px; margin:0 10px 0 30px;">
-                        <button class="btn btn-primary rounded-end" type="submit" id="search-button">Cari</button>
+                            style="width: 600px; margin: 0 10px;">
+                        <button class="btn rounded-end" type="submit" id="search-button" style="background: #74512D; color: white">Cari</button>
                     </form>
                 </div>
 
-                <div class="container">
-                    <table class="table">
-                        <thead>
+                <div class="container-isi" style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc;margin-top: 20px; margin-left: 25px">
+                    <table class="table table-bordered">
+                        <thead style="position: sticky; top: 0; background-color: white; z-index: 1;">
                             <tr>
                                 <th scope="col" style="width: 20%;">Nomor Surat</th>
                                 <th scope="col" style="width: 20%;">Kategori</th>
@@ -61,20 +73,18 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                         </form>
-                                        <a href="{{ asset('storage/' . $surat->file) }}" class="btn btn-primary btn-sm"
-                                            download>Unduh</a>
-
-                                        <a href="{{ route('lihat', $surat->id) }}">Lihat Surat</a>
-
-                                    </td> <!-- Tambahkan link untuk edit -->
+                                        <a href="{{ asset('storage/' . $surat->file) }}" class="btn btn-primary btn-sm" download>Unduh</a>
+                                        <a href="{{ route('lihat', $surat->id) }}" class="btn btn-warning btn-sm" >Lihat Surat</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+
                 <div class="container">
                     <button type="button" class="btn btn-secondary"
-                        onclick="window.location.href = 'tambahsurat';">Arsipkan Surat</button>
+                        onclick="window.location.href = 'tambahsurat';" style="margin-top: 20px; background: #74512D">Arsipkan Surat</button>
                 </div>
             </div>
             {{-- end content --}}

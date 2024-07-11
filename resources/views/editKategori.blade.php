@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="container d-flex">
-                            <button type="button" class="btn btn-secondary" onclick="window.location.href = '/arsip';"
+                            <button type="button" class="btn btn-secondary" onclick="window.location.href = '/kategori';"
                                 style="margin-right: 20px">Kembali</button>
                             <button type="submit" class="btn btn-danger">Simpan</button>
                         </div>

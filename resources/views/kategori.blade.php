@@ -25,10 +25,17 @@
                     <p>Berikut ini adalah surat-surat yang telah terbit dan diarsipkan.<br>
                         Klik "Lihat" pada kolom aksi untuk menampilkan surat.</p>
                 </div>
-                <div class="container">
-                    <p>Cari surat:</p>
 
+                <div class="search-filter d-flex justify-content-center">
+                    <form action="#" method="GET" class="d-flex w-100 justify-content-center align-items-center">
+                        <span class="judul" style="margin-right: 10px; font-weight: 700">Cari Kategori:</span>
+                        <input type="text" name="search" class="form-control rounded-start" placeholder="Search..."
+                            aria-label="Search" aria-describedby="search-button" value="{{ request('search') }}"
+                            style="width: 600px; margin: 0 10px;">
+                        <button class="btn rounded-end" type="submit" id="search-button" style="background: #74512D; color: white">Cari</button>
+                    </form>
                 </div>
+
                 <div class="container">
                     <table class="table">
                         <thead>
@@ -40,20 +47,20 @@
                             </tr>
                         </thead>
                         <tbody id="tabelKategori">
-                            @foreach ($Kategori as $kategori)
+                            @foreach ($kategori as $item)
                                 <tr>
-                                    <td>{{ $kategori->id }}</td>
-                                    <td>{{ $kategori->nama_kategori }}</td>
-                                    <td>{{ $kategori->keterangan }}</td>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->nama_kategori }}</td>
+                                    <td>{{ $item->keterangan }}</td>
                                     <td>
-                                        <form action="{{ route('kategori.destroy', $kategori->id) }}" method="POST"
+                                        <form action="{{ route('kategori.destroy', $item->id) }}" method="POST"
                                             style="display:inline-block;"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                         </form>
-                                        <a href="{{ route('edit-kategori', $kategori->id) }}">Edit / Ganti File</a>
+                                        <a href="{{ route('edit-kategori', $item->id) }}"class="btn btn-warning btn-sm" style="color: black">Edit / Ganti File</a>
                                     </td> <!-- Tambahkan link untuk edit -->
                                 </tr>
                             @endforeach
@@ -61,7 +68,7 @@
                     </table>
                 </div>
                 <div class="container">
-                    <button type="button" class="btn btn-secondary" onclick="window.location.href = 'tambahKategori';">Tambah Kategori</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href = 'tambahKategori';" style="background: #74512D"">Tambah Kategori</button>
                 </div>
             </div>
             {{-- end content --}}

@@ -1,26 +1,31 @@
 <!-- resources/views/sidebar.blade.php -->
-<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: #AF8F6F">
+    <div class="d-flex flex-column align-items-center text-white min-vh-100" style="justify-content: center;">
         <a href="" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <span class="fs-5 d-none d-sm-inline">Menu</span>
+            <span class="fs-5" style="font-family: sans-serif; font-weight: 700;margin-top: 50px;margin-left: 90px">Menu</span>
         </a>
-        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+        <hr style="width: 100%;">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-right" id="menu" style="margin-top: 20px">
             <li class="nav-item">
-                <a href="/arsip" class="nav-link align-middle px-0">
-                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Arsip</span>
+                <a href="/arsip" class="nav-link align-middle px-0 d-flex align-items-right" style="margin-bottom: 20px">
+                    <img src="{{ asset('img/test.png') }}" alt="Arsip Icon" class="icon-image me-2" style="width: 24px; height: 24px;">
+                    <span class="text-white">Arsip</span>
                 </a>
             </li>
-            <li>
-                <a href="/kategori" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Kategori Surat</span>
+            <li class="nav-item">
+                <a href="/kategori" class="nav-link align-middle px-0 d-flex align-items-right" style="margin-bottom: 20px">
+                    <img src="{{ asset('img/rak.png') }}" alt="Kategori Icon" class="icon-image me-2" style="width: 24px; height: 24px;">
+                    <span class="text-white">Kategori Surat</span>
                 </a>
             </li>
-            <li>
-                <a href="" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">About</span>
+            <li class="nav-item">
+                <a href="/about" class="nav-link align-middle px-0 d-flex align-items-right" style="margin-bottom: 20px">
+                    <img src="{{ asset('img/info.png') }}" alt="About Icon" class="icon-image me-2" style="width: 24px; height: 24px;">
+                    <span class="text-white">About</span>
                 </a>
             </li>
         </ul>
-        <hr>
+        
     </div>
 </div>
+

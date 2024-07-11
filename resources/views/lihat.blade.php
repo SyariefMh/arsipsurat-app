@@ -22,20 +22,43 @@
             <div class="col py-3">
                 <div class="container">
                     <h1>Lihat Surat</h1>
-                    <p>Nomor</p>
-                    <p>Kategori</p>
-                    <p>Judul</p>
-                    <p>Waktu unggah</p>
+                    <div class="container">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <div class="col-3"><strong>Nomor</strong></div>
+                                    <div class="col-1">:</div>
+                                    <div class="col-5">{{ $surat->nomor_surat }}</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-3"><strong>Kategori</strong></div>
+                                    <div class="col-1">:</div>
+                                    <div class="col-5">{{ $surat->kategori->nama_kategori }}</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-3"><strong>Judul</strong></div>
+                                    <div class="col-1">:</div>
+                                    <div class="col-5">{{ $surat->judul }}</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-3"><strong>Waktu unggah</strong></div>
+                                    <div class="col-1">:</div>
+                                    <div class="col-5">{{ $surat->created_at }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <embed src="{{ asset('storage/' . $surat->file) }}" type="application/pdf" width="100%"
-                    height="600px" />
+                    height="600px" style="margin-left: 25px" />
 
                 <div class="container d-flex">
-                    <button type="button" class="btn btn-secondary" onclick="window.location.href = 'kategori';"
-                        style="margin-right: 20px">Kembali</button>
-                    <a href="{{ asset('storage/' . $surat->file) }}" class="btn btn-primary btn-sm" download>Unduh</a>
-                    <a href="{{ route('edit-surat', $surat->id) }}" class="btn btn-warning btn-sm">Edit / Ganti File</a>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href = 'kategori';"
+                        style="margin-right: 20px;">Kembali</button>
+                    <a href="{{ asset('storage/' . $surat->file) }}" class="btn btn-primary btn-sm" style="margin-right: 20px" download>Unduh</a>
+                    <a href="{{ route('edit-surat', $surat->id) }}" class="btn btn-primary btn-sm">Edit / Ganti File</a>
                 </div>
             </div>
             {{-- end content --}}

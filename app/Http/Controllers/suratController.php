@@ -12,8 +12,6 @@ class suratController extends Controller
 {
     public function index(Request $request)
     {
-        
-
         $query = Surat::with('kategori'); // Eager loading relasi kategoriSurat
         if ($request->has('search')) {
             $search = $request->input('search');
